@@ -1,0 +1,37 @@
+[
+  {
+    "id": "evidence_at_15_seconds",
+    "events": [{"timestamp": "2026-10-01T10:00:00+00:00", "source": "vehicle_control", "event_type": "hard_brake", "message": "Synthetic hard brake signal."}],
+    "evidence": [{"timestamp": "2026-10-01T10:00:15+00:00", "evidence_type": "log", "label": "Synthetic aligned log", "description": "Synthetic evidence exactly 15 seconds after event."}],
+    "expected_finding": true, "expected_evidence_indexes": [0], "expected_timestamp": "2026-10-01T10:00:00+00:00",
+    "expected_workflow_steps": ["load_incident", "read_drive_logs", "sample_video_metadata", "align_timeline", "draft_report"]
+  },
+  {
+    "id": "evidence_before_threshold",
+    "events": [{"timestamp": "2026-10-01T11:00:10+00:00", "source": "perception", "event_type": "lane_alert", "message": "Synthetic lane alert."}],
+    "evidence": [{"timestamp": "2026-10-01T11:00:00+00:00", "evidence_type": "keyframe_metadata", "label": "Synthetic keyframe metadata", "description": "Metadata placeholder; no visual interpretation."}],
+    "expected_finding": true, "expected_evidence_indexes": [0], "expected_timestamp": "2026-10-01T11:00:10+00:00",
+    "expected_workflow_steps": ["load_incident", "read_drive_logs", "sample_video_metadata", "align_timeline", "draft_report"]
+  },
+  {
+    "id": "no_evidence",
+    "events": [{"timestamp": "2026-10-01T12:00:00+00:00", "source": "localization", "event_type": "pose_uncertain", "message": "Synthetic localization warning."}],
+    "evidence": [],
+    "expected_finding": false, "expected_evidence_indexes": [], "expected_timestamp": null,
+    "expected_workflow_steps": ["load_incident", "read_drive_logs", "sample_video_metadata", "align_timeline", "draft_report"]
+  },
+  {
+    "id": "evidence_outside_15_seconds",
+    "events": [{"timestamp": "2026-10-01T13:00:00+00:00", "source": "vehicle_control", "event_type": "unexpected_stop", "message": "Synthetic stop event."}],
+    "evidence": [{"timestamp": "2026-10-01T13:00:16+00:00", "evidence_type": "video_metadata", "label": "Synthetic clip metadata", "description": "Metadata placeholder sixteen seconds after event."}],
+    "expected_finding": false, "expected_evidence_indexes": [], "expected_timestamp": null,
+    "expected_workflow_steps": ["load_incident", "read_drive_logs", "sample_video_metadata", "align_timeline", "draft_report"]
+  },
+  {
+    "id": "unsupported_evidence_type",
+    "events": [{"timestamp": "2026-10-01T14:00:00+00:00", "source": "perception", "event_type": "object_alert", "message": "Synthetic object alert."}],
+    "evidence": [{"timestamp": "2026-10-01T14:00:01+00:00", "evidence_type": "video_frame", "label": "Synthetic frame", "description": "Unsupported raw frame type; no frame is interpreted."}],
+    "expected_finding": false, "expected_evidence_indexes": [], "expected_timestamp": null,
+    "expected_workflow_steps": ["load_incident", "read_drive_logs", "sample_video_metadata", "align_timeline", "draft_report"]
+  }
+]

@@ -1,0 +1,12 @@
+node_modules
+**/node_modules
+frontend/dist
+**/__pycache__
+**/*.py[cod]
+.git
+.DS_Store
+.env
+.env.*
+**/.env
+**/.env.*
+!backend/.env.example
